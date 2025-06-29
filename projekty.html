@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DarkPrompt Studio – Projekty</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <svg width="600" height="100" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="neonBlue" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#3df0ff" flood-opacity="1" />
+          <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#3df0ff" flood-opacity="0.6" />
+        </filter>
+        <filter id="neonWhite" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#fff" flood-opacity="1" />
+          <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#fff" flood-opacity="0.5" />
+        </filter>
+      </defs>
+      <text x="10" y="70" font-family="Orbitron, Exo, 'Segoe UI', sans-serif" font-weight="700" font-size="60" fill="#3df0ff" filter="url(#neonBlue)">DarkPrompt</text>
+      <text x="380" y="70" font-family="Orbitron, Exo, 'Segoe UI', sans-serif" font-weight="700" font-size="60" fill="#fff" filter="url(#neonWhite)">Studio</text>
+    </svg>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  </header>
+
+  <nav class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="index.html">Strona główna</a></li>
+      <li><a href="o-mnie.html">O mnie</a></li>
+      <li><a href="projekty.html" class="active">Projekty</a></li>
+      <li><a href="download.html">Do pobrania</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <section class="page active">
+      <h1 class="page-title">Projekty</h1>
+      <div class="gallery" id="gallery">
+        <div class="project project-card" data-gallery="sektor13" onclick="showGallery('sektor13')">
+          <div class="project-inner">
+            <img src="images/sektor13/1.jpg" alt="Sektor 13" />
+            <h2>Sektor 13</h2>
+            <p>Postapokaliptyczna gra strategiczna z mapą, budynkami i handlem.</p>
+          </div>
+        </div>
+        <div class="project project-card" data-gallery="pamietnikApp" onclick="showGallery('pamietnikApp')">
+          <div class="project-inner">
+            <img src="images/pamietnikApp/1.jpg" alt="Pamiętnik App" />
+            <h2>Pamiętnik App</h2>
+            <p>Minimalistyczna aplikacja mobilna do notowania emocji i codziennych myśli.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery-viewer" class="gallery-viewer" style="display:none;">
+        <button id="close-gallery">Zamknij galerię</button>
+        <div id="gallery-images" class="gallery-images"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 DarkPrompt Studio</footer>
+  <script src="script.js"></script>
+</body>
+</html>

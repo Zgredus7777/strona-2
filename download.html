@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DarkPrompt Studio – Do pobrania</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <svg width="600" height="100" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
+      <!-- ten sam neonowy SVG -->
+      <defs>
+        <filter id="neonBlue" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#3df0ff" flood-opacity="1" />
+          <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#3df0ff" flood-opacity="0.6" />
+        </filter>
+        <filter id="neonWhite" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#fff" flood-opacity="1" />
+          <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#fff" flood-opacity="0.5" />
+        </filter>
+      </defs>
+      <text x="10" y="70" font-family="Orbitron, Exo, 'Segoe UI', sans-serif" font-weight="700" font-size="60" fill="#3df0ff" filter="url(#neonBlue)">DarkPrompt</text>
+      <text x="380" y="70" font-family="Orbitron, Exo, 'Segoe UI', sans-serif" font-weight="700" font-size="60" fill="#fff" filter="url(#neonWhite)">Studio</text>
+    </svg>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  </header>
+
+  <nav class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="index.html">Strona główna</a></li>
+      <li><a href="o-mnie.html">O mnie</a></li>
+      <li><a href="projekty.html">Projekty</a></li>
+      <li><a href="download.html" class="active">Do pobrania</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <section class="page active">
+      <h1 class="page-title">Do pobrania</h1>
+      <ul>
+        <li><a href="downloads/projekt1.apk" download>Projekt 1 – APK</a></li>
+        <li><a href="downloads/projekt2.apk" download>Projekt 2 – APK</a></li>
+        <li><a href="downloads/portfolio.pdf" download>Portfolio PDF</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 DarkPrompt Studio</footer>
+  <script src="script.js"></script>
+</body>
+</html>

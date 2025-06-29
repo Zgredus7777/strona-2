@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DarkPrompt Studio – Kontakt</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <svg width="600" height="100" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="neonBlue" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#3df0ff" flood-opacity="1" />
+          <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#3df0ff" flood-opacity="0.6" />
+        </filter>
+        <filter id="neonWhite" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#fff" flood-opacity="1" />
+          <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#fff" flood-opacity="0.5" />
+        </filter>
+      </defs>
+      <text x="10" y="70" font-family="Orbitron, Exo, 'Segoe UI', sans-serif" font-weight="700" font-size="60" fill="#3df0ff" filter="url(#neonBlue)">DarkPrompt</text>
+      <text x="380" y="70" font-family="Orbitron, Exo, 'Segoe UI', sans-serif" font-weight="700" font-size="60" fill="#fff" filter="url(#neonWhite)">Studio</text>
+    </svg>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  </header>
+
+  <nav class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="index.html">Strona główna</a></li>
+      <li><a href="o-mnie.html">O mnie</a></li>
+      <li><a href="projekty.html">Projekty</a></li>
+      <li><a href="download.html">Do pobrania</a></li>
+      <li><a href="kontakt.html" class="active">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <section class="page active">
+      <h1 class="page-title">Kontakt</h1>
+      <form id="contact-form">
+        <label for="name">Imię:</label>
+        <input type="text" id="name" name="name" required placeholder="Twoje imię">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Twój email">
+
+        <label for="message">Wiadomość:</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Twoja wiadomość"></textarea>
+
+        <button type="submit">Wyślij</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 DarkPrompt Studio</footer>
+  <script src="script.js"></script>
+</body>
+</html>
