@@ -22,7 +22,7 @@
       <text x="10" y="70" font-family="Orbitron, Exo, 'Segoe UI', sans-serif" font-weight="700" font-size="60" fill="#3df0ff" filter="url(#neonBlue)">DarkPrompt</text>
       <text x="380" y="70" font-family="Orbitron, Exo, 'Segoe UI', sans-serif" font-weight="700" font-size="60" fill="#fff" filter="url(#neonWhite)">Studio</text>
     </svg>
-    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
   </header>
 
   <nav class="sidebar" id="sidebar">
@@ -83,22 +83,23 @@
         <div class="tile">⚙️ Automatyzacje procesów</div>
       </div>
     </section>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggleBtn = document.querySelector(".menu-toggle");
-      const sidebar = document.getElementById("sidebar");
-
-      toggleBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
-      });
-    });
-  </script>
   </main>
 
   <footer>
     © 2025 DarkPrompt Studio
   </footer>
 
-  <script src="script.js"></script>
+  <!-- JavaScript to handle mobile menu toggle -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.querySelector(".menu-toggle");
+      const sidebar = document.getElementById("sidebar");
+
+      toggleBtn.addEventListener("click", () => {
+        const isOpen = sidebar.classList.toggle("open");
+        toggleBtn.setAttribute("aria-expanded", isOpen);
+      });
+    });
+  </script>
 </body>
 </html>

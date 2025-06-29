@@ -51,6 +51,11 @@ body {
   cursor: pointer;
 }
 
+.menu-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #4caf50;
+}
+
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
@@ -647,12 +652,12 @@ h1, h2 {
 .tiles-wrapper {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding: 1rem;
-  justify-content: flex-start;
-  align-items: stretch;
   gap: 2rem;
   margin-top: 2rem;
   margin-bottom: 4rem;
@@ -762,8 +767,10 @@ h1, h2 {
   }
 
   .tiles-wrapper {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
   }
 
   .gallery-grid {
@@ -778,4 +785,67 @@ h1, h2 {
     max-width: 100%;
     height: auto;
   }
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav ul li {
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+
+  nav ul li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Added styles for mobile sidebar and menu toggle */
+.menu-toggle {
+  display: block;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 300;
+}
+
+.sidebar {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background: #1e1e1e;
+  padding: 1rem;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 200;
+}
+
+.sidebar.open {
+  display: flex;
+  transform: translateX(0);
+}
 }
