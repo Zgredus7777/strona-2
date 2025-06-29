@@ -1,16 +1,3 @@
-// Toggle menu on mobile
-const menuToggle = document.querySelector('.menu-toggle');
-if (menuToggle) {
-  menuToggle.addEventListener('click', () => {
-    const sidebar = document.getElementById('sidebar');
-    if (sidebar.style.display === 'block' || sidebar.style.display === '') {
-      sidebar.style.display = 'none';
-    } else {
-      sidebar.style.display = 'block';
-    }
-  });
-}
-
 // Dane galerii zdjęć
 const galleries = {
   'sektor13': ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png'],
@@ -34,24 +21,17 @@ function showGallery(name) {
   viewer.style.display = 'block';
 }
 
-// Obsługa kliknięcia przycisków galerii
-document.querySelectorAll('.show-gallery').forEach(button => {
-  button.addEventListener('click', (e) => {
-    const project = e.target.closest('.project');
-    const galleryName = project.getAttribute('data-gallery');
-    showGallery(galleryName);
-  });
-});
-
 // Obsługa zamykania galerii
-const closeGallery = document.getElementById('close-gallery');
-if (closeGallery) {
-  closeGallery.addEventListener('click', () => {
-    document.getElementById('gallery-viewer').style.display = 'none';
-    document.getElementById('gallery').style.display = 'flex';
-    document.getElementById('gallery-images').innerHTML = '';
-    initProjectGallery(); // re-bind clicks when gallery closes
-  });
+function initCloseGallery() {
+  const closeGallery = document.getElementById('close-gallery');
+  if (closeGallery) {
+    closeGallery.addEventListener('click', () => {
+      document.getElementById('gallery-viewer').style.display = 'none';
+      document.getElementById('gallery').style.display = 'flex';
+      document.getElementById('gallery-images').innerHTML = '';
+      initProjectGallery(); // re-bind clicks when gallery closes
+    });
+  }
 }
 
 function initProjectGallery() {
@@ -61,17 +41,35 @@ function initProjectGallery() {
       card.onclick = () => showGallery(gallery);
     }
   });
+
+  document.querySelectorAll('.show-gallery').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const project = e.target.closest('.project');
+      const galleryName = project.getAttribute('data-gallery');
+      showGallery(galleryName);
+    });
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  initProjectGallery();
-});
-
-// Background image loader
-document.addEventListener('DOMContentLoaded', () => {
+  // Background image
   const body = document.querySelector('body');
   body.style.backgroundImage = "url('images/background.png')";
   body.style.backgroundSize = "cover";
   body.style.backgroundRepeat = "no-repeat";
   body.style.backgroundPosition = "center center";
+
+  // Toggle sidebar
+  const menuToggle = document.querySelector('.menu-toggle');
+  const sidebar = document.getElementById('sidebar');
+
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      body.classList.toggle('no-scroll');
+    });
+  }
+
+  initProjectGallery();
+  initCloseGallery();
 });
