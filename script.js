@@ -46,39 +46,18 @@ document.getElementById('close-gallery').addEventListener('click', () => {
   document.getElementById('gallery-viewer').style.display = 'none';
   document.getElementById('gallery').style.display = 'flex';
   document.getElementById('gallery-images').innerHTML = '';
+  initProjectGallery(); // re-bind clicks when gallery closes
 });
 
-// Page navigation
-const links = document.querySelectorAll('.sidebar a');
-const pages = document.querySelectorAll('.page');
-
-links.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const target = link.getAttribute('data-target');
-
-    pages.forEach(page => {
-      // Start fade out
-      page.style.opacity = 0;
-      // Delay to allow fade out before switching active page
-      setTimeout(() => {
-        page.classList.remove('active');
-        if (page.id === target) {
-          page.classList.add('active');
-          // Fade in active page
-          setTimeout(() => {
-            page.style.opacity = 1;
-          }, 50);
-        }
-      }, 200);
-    });
-
-    links.forEach(l => l.classList.remove('active'));
-    link.classList.add('active');
-
-    // Hide sidebar on mobile after clicking
-    if (window.innerWidth <= 768) {
-      document.getElementById('sidebar').style.display = 'none';
+function initProjectGallery() {
+  document.querySelectorAll('.project-card').forEach(card => {
+    const gallery = card.getAttribute('data-gallery');
+    if (gallery) {
+      card.onclick = () => showGallery(gallery);
     }
   });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initProjectGallery();
 });
