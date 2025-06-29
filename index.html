@@ -83,6 +83,16 @@
         <div class="tile">⚙️ Automatyzacje procesów</div>
       </div>
     </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.querySelector(".menu-toggle");
+      const sidebar = document.getElementById("sidebar");
+
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+      });
+    });
+  </script>
   </main>
 
   <footer>
