@@ -78,10 +78,11 @@ body {
 .sidebar ul {
   list-style: none;
   padding: 0;
+  width: 100%;
 }
 
 .sidebar li {
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
 }
 
 .sidebar a {
@@ -89,13 +90,14 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0.6rem;
-  margin: 0.2rem 0;
+  padding: 0.5rem 0.9rem;
+  margin: 0.3rem 0;
   text-decoration: none;
   color: #ccc;
   border-left: 4px solid transparent;
   border-radius: 12px;
   font-weight: 600;
+  font-size: 1rem;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   background-color: #1c1c1c;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
@@ -107,6 +109,11 @@ body {
   background-color: #2a2a2a;
   border-left-color: #4caf50;
   box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
+}
+
+.sidebar a.active {
+  border-left-width: 6px;
+  font-weight: bold;
 }
 
 .content {
@@ -131,6 +138,12 @@ footer {
 }
 
 /* Formularz */
+.contact-section {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
 #contact-form {
   max-width: 400px;
   display: flex;
@@ -200,6 +213,10 @@ footer {
 
 /* Responsywność */
 @media (max-width: 768px) {
+  body, html {
+    font-size: 90%;
+  }
+
   body {
     grid-template-columns: 1fr;
     grid-template-rows: 70px auto 40px;
@@ -215,6 +232,51 @@ footer {
 
   .menu-toggle {
     display: block;
+  }
+
+  .tiles-wrapper,
+  .feature-cards,
+  .download-cards,
+  .services-grid {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    justify-content: center;
+  }
+
+  .tile,
+  .feature-card,
+  .download-card,
+  .service-card,
+  .project-card {
+    min-width: auto;
+    width: 90%;
+    max-width: 100%;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  #home {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .tile,
+  .feature-card,
+  .download-card,
+  .service-card,
+  .project-card {
+    margin-bottom: 1rem;
+  }
+
+  .tiles-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -375,8 +437,8 @@ h1, h2 {
 
 /* Dlaczego DarkPrompt Studio? section styles */
 .why-darkprompt {
-  margin-top: 80px;
   margin-top: 4rem;
+  margin-bottom: 4rem;
   text-align: center;
   color: #eee;
   display: flex;
@@ -486,8 +548,7 @@ h1, h2 {
 /* Download section */
 .download-section {
   max-width: 1000px;
-  margin: 3rem auto;
-  margin-top: 4rem;
+  margin: 4rem auto 4rem auto;
   padding: 2rem;
   background-color: #1d1d1d;
   border-radius: 12px;
@@ -554,8 +615,7 @@ h1, h2 {
 
 /* Usługi (Services) section */
 .services-section {
-  margin: 3rem auto;
-  margin-top: 4rem;
+  margin: 4rem auto 4rem auto;
   max-width: 1200px;
   padding: 2rem;
   background-color: #1d1d1d;
@@ -653,6 +713,7 @@ h1, h2 {
 .tiles-wrapper {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding: 1rem;
@@ -693,24 +754,4 @@ h1, h2 {
   color: #ccc;
   font-size: 0.95rem;
   line-height: 1.5;
-}
-
-/* Sidebar spacing improvements */
-.sidebar li {
-  margin: 0.3rem 0;
-}
-
-.sidebar a {
-  margin: 0.3rem 0;
-  padding: 0.5rem 0.9rem;
-  font-size: 1rem;
-}
-
-.sidebar a.active {
-  border-left-width: 6px;
-  font-weight: bold;
-}
-
-.sidebar ul {
-  width: 100%;
 }
