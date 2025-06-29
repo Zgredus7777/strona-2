@@ -1,13 +1,15 @@
 // Toggle menu on mobile
-document.querySelector('.menu-toggle').addEventListener('click', () => {
-  const sidebar = document.getElementById('sidebar');
-  if (sidebar.style.display === 'block' || sidebar.style.display === '') {
-    sidebar.style.display = 'none';
-  } else {
-    sidebar.style.display = 'block';
-  }
-
-});
+const menuToggle = document.querySelector('.menu-toggle');
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar.style.display === 'block' || sidebar.style.display === '') {
+      sidebar.style.display = 'none';
+    } else {
+      sidebar.style.display = 'block';
+    }
+  });
+}
 
 // Dane galerii zdjęć
 const galleries = {
@@ -42,12 +44,15 @@ document.querySelectorAll('.show-gallery').forEach(button => {
 });
 
 // Obsługa zamykania galerii
-document.getElementById('close-gallery').addEventListener('click', () => {
-  document.getElementById('gallery-viewer').style.display = 'none';
-  document.getElementById('gallery').style.display = 'flex';
-  document.getElementById('gallery-images').innerHTML = '';
-  initProjectGallery(); // re-bind clicks when gallery closes
-});
+const closeGallery = document.getElementById('close-gallery');
+if (closeGallery) {
+  closeGallery.addEventListener('click', () => {
+    document.getElementById('gallery-viewer').style.display = 'none';
+    document.getElementById('gallery').style.display = 'flex';
+    document.getElementById('gallery-images').innerHTML = '';
+    initProjectGallery(); // re-bind clicks when gallery closes
+  });
+}
 
 function initProjectGallery() {
   document.querySelectorAll('.project-card').forEach(card => {
