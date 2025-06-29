@@ -61,3 +61,12 @@ function initProjectGallery() {
 document.addEventListener('DOMContentLoaded', () => {
   initProjectGallery();
 });
+
+// Background image loader
+document.addEventListener('DOMContentLoaded', () => {
+  const body = document.querySelector('body');
+  body.style.backgroundImage = "url('images/background.png')";
+  body.style.backgroundSize = "cover";
+  body.style.backgroundRepeat = "no-repeat";
+  body.style.backgroundPosition = "center center";
+});

@@ -9,6 +9,11 @@ body, html {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #121212;
   color: #eee;
+  background-image: url('images/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
 }
 
 body {
@@ -46,39 +51,62 @@ body {
   cursor: pointer;
 }
 
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4caf50;
+  text-shadow: 0 0 10px #4caf50;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .sidebar {
   grid-area: sidebar;
-  background-color: #222;
+  background: linear-gradient(to bottom, #1e1e1e, #141414);
   border-right: 1px solid #333;
-  padding-top: 1rem;
+  padding: 1rem 0.5rem;
   position: sticky;
   top: 70px;
   height: calc(100vh - 110px);
   overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .sidebar ul {
   list-style: none;
+  padding: 0;
 }
 
 .sidebar li {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .sidebar a {
-  display: block;
-  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.2rem 0;
   text-decoration: none;
-  color: #aaa;
+  color: #ccc;
   border-left: 4px solid transparent;
+  border-radius: 12px;
+  font-weight: 600;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  background-color: #1c1c1c;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .sidebar a:hover,
 .sidebar a.active {
-  color: #4caf50;
-  background-color: #333;
+  color: #fff;
+  background-color: #2a2a2a;
   border-left-color: #4caf50;
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
 }
 
 .content {
@@ -107,6 +135,9 @@ footer {
   max-width: 400px;
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 #contact-form label {
@@ -144,14 +175,27 @@ footer {
 
 /* Wyśrodkowanie strony głównej */
 #home {
-  padding: 2rem;
-  min-height: calc(100vh - 110px);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   box-sizing: border-box;
+  background-color: #181818;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  margin-bottom: 2rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .home-intro {
-  margin-bottom: 3rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
 }
 
 /* Responsywność */
@@ -178,6 +222,7 @@ h1, h2 {
   color: #eee;
   margin-bottom: 1rem;
   text-align: center;
+  font-weight: 600;
 }
 
 /* Galeria zdjęć projektów */
@@ -272,6 +317,7 @@ h1, h2 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 300px;
   margin: 1rem;
+  scroll-snap-align: start;
 }
 
 .project-card:hover {
@@ -330,6 +376,7 @@ h1, h2 {
 /* Dlaczego DarkPrompt Studio? section styles */
 .why-darkprompt {
   margin-top: 80px;
+  margin-top: 4rem;
   text-align: center;
   color: #eee;
   display: flex;
@@ -379,4 +426,291 @@ h1, h2 {
 .feature p {
   font-size: 0.95rem;
   color: #ccc;
+}
+
+/* O mnie section */
+.about-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  background-color: #1b1b1b;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  max-width: 1200px;
+  margin: 3rem auto;
+}
+
+.about-card {
+  background-color: #222;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #eee;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 300px;
+  max-width: 320px;
+}
+
+.about-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(76, 175, 80, 0.4);
+}
+
+.about-card h3 {
+  color: #4caf50;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.about-card p {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.about-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #4caf50;
+  margin-bottom: 1rem;
+}
+
+/* Download section */
+.download-section {
+  max-width: 1000px;
+  margin: 3rem auto;
+  margin-top: 4rem;
+  padding: 2rem;
+  background-color: #1d1d1d;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
+}
+
+.download-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #4caf50;
+}
+
+.download-cards {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.download-card {
+  background-color: #222;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.download-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+}
+
+.download-card h3 {
+  margin-bottom: 1rem;
+  color: #4caf50;
+}
+
+.download-card p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.download-card a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background-color: #4caf50;
+  color: #121212;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.download-card a:hover {
+  background-color: #369b34;
+}
+
+/* Usługi (Services) section */
+.services-section {
+  margin: 3rem auto;
+  margin-top: 4rem;
+  max-width: 1200px;
+  padding: 2rem;
+  background-color: #1d1d1d;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
+  text-align: center;
+}
+
+.services-section h2 {
+  font-size: 2rem;
+  color: #4caf50;
+  margin-bottom: 2rem;
+}
+
+.services-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.service-card {
+  background-color: #222;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 260px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #eee;
+  scroll-snap-align: start;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+}
+
+.service-card h3 {
+  margin-bottom: 1rem;
+  color: #4caf50;
+  font-size: 1.3rem;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+/* Feature cards (kafelki) */
+.feature-cards {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background-color: #222;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #eee;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(76, 175, 80, 0.4);
+}
+
+.feature-card h3 {
+  margin-bottom: 0.8rem;
+  color: #4caf50;
+}
+
+.feature-card p {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* Kafelki na stronie głównej */
+.tiles-wrapper {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.tile {
+  background-color: #222;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  color: #eee;
+  min-width: 300px;
+  flex: 0 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(76, 175, 80, 0.4);
+}
+
+.tile h3 {
+  margin-bottom: 0.8rem;
+  color: #4caf50;
+  font-size: 1.3rem;
+}
+
+.tile p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Sidebar spacing improvements */
+.sidebar li {
+  margin: 0.3rem 0;
+}
+
+.sidebar a {
+  margin: 0.3rem 0;
+  padding: 0.5rem 0.9rem;
+  font-size: 1rem;
+}
+
+.sidebar a.active {
+  border-left-width: 6px;
+  font-weight: bold;
+}
+
+.sidebar ul {
+  width: 100%;
 }
