@@ -75,6 +75,19 @@ body {
   align-items: flex-start;
 }
 
+@media (max-width: 768px) {
+  .sidebar.open {
+    display: flex;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: calc(100vh - 70px);
+    z-index: 200;
+    background-color: #1e1e1e;
+    width: 100%;
+  }
+}
+
 .sidebar ul {
   list-style: none;
   padding: 0;
@@ -765,4 +778,23 @@ h1, h2 {
   color: #ccc;
   font-size: 0.95rem;
   line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: #1e1e1e;
+    z-index: 100;
+    padding: 1rem;
+  }
+
+  .sidebar.open {
+    transform: translateX(0%);
+  }
 }
