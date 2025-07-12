@@ -10,16 +10,184 @@
   <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    /* Dodatkowe style dla lepszego UI */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .lightbox-content-container {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+    
+    .lightbox-content {
+      max-width: 100%;
+      max-height: 80vh;
+      display: none;
+    }
+    
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    .chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 350px;
+      background-color: #1a1a2e;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(61, 240, 255, 0.5);
+      z-index: 999;
+      transition: transform 0.3s ease;
+    }
+    
+    .chat-widget.minimized {
+      transform: translateY(calc(100% - 40px));
+    }
+    
+    .chat-header {
+      background-color: #0d0d1a;
+      padding: 15px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      cursor: move;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .minimize-btn {
+      background: none;
+      border: none;
+      color: #3df0ff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    
+    .chat-messages {
+      height: 300px;
+      overflow-y: auto;
+      padding: 15px;
+      background-color: #16213e;
+    }
+    
+    .message {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 80%;
+    }
+    
+    .message.user {
+      background-color: #0f3460;
+      margin-left: auto;
+    }
+    
+    .message.admin {
+      background-color: #1f4068;
+      margin-right: auto;
+    }
+    
+    .chat-input-area {
+      padding: 15px;
+      background-color: #0d0d1a;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    
+    .chat-input-area input,
+    .chat-input-area textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #1a1a2e;
+      border: 1px solid #3df0ff;
+      border-radius: 5px;
+      color: white;
+    }
+    
+    .send-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #3df0ff;
+      color: #0d0d1a;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #0d0d1a;
+      border: 1px solid #3df0ff;
+      color: #3df0ff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 998;
+    }
+    
+    .cookie-banner {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #0d0d1a;
+      color: white;
+      padding: 20px;
+      border: 1px solid #3df0ff;
+      border-radius: 10px;
+      max-width: 90%;
+      z-index: 1000;
+      display: none;
+    }
+    
+    .portfolio-item {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .portfolio-item:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
   <form name="hidden-form" netlify netlify-honeypot="bot-field" hidden>
-  <input type="text" name="email">
-  <textarea name="message"></textarea>
-</form>
+    <input type="text" name="email">
+    <textarea name="message"></textarea>
+  </form>
+  
   <!-- Lightbox dla galerii -->
   <div id="lightbox" class="lightbox">
-    <span class="close-lightbox">&times;</span>
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
     <div id="lightbox-img" class="lightbox-content-container"></div>
+    <div class="lightbox-controls">
+      <button id="prev-btn" class="lightbox-btn">❮</button>
+      <button id="next-btn" class="lightbox-btn">❯</button>
+    </div>
   </div>
 
   <header class="header">
@@ -177,26 +345,362 @@
     </div>
   </div>
 
-<!-- Widget czatu -->
-<div id="chat-widget" class="chat-widget">
-  <div id="chat-header" class="chat-header">
-    <span>Czat z DarkPrompt</span>
-    <button id="minimize-chat" class="minimize-btn">_</button>
-  </div>
-  <div id="chat-messages" class="chat-messages">
-    <div class="message admin">
-      👋 Witaj! Jak możemy Ci pomóc?
+  <!-- Widget czatu -->
+  <div id="chat-widget" class="chat-widget">
+    <div id="chat-header" class="chat-header">
+      <span>Czat z DarkPrompt</span>
+      <button id="minimize-chat" class="minimize-btn">_</button>
+    </div>
+    <div id="chat-messages" class="chat-messages">
+      <div class="message admin">
+        👋 Witaj! Jak możemy Ci pomóc?
+      </div>
+    </div>
+    <div id="chat-input-area" class="chat-input-area">
+      <form name="chat-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="chat-form">
+        <p class="hidden">
+          <label>Nie wypełniaj tego: <input name="bot-field"></label>
+        </p>
+        
+        <input type="email" id="user-email" name="email" placeholder="Twój email" required>
+        <textarea id="chat-input" name="message" placeholder="Napisz wiadomość..." required></textarea>
+        <button type="submit" id="send-message" class="send-btn">Wyślij</button>
+      </form>
     </div>
   </div>
-  <div id="chat-input-area" class="chat-input-area">
-    <form name="chat-form" method="POST" data-netlify="true" netlify-recaptcha="true">
-      <input type="email" id="user-email" name="email" placeholder="Twój email" required>
-      <textarea id="chat-input" name="message" placeholder="Napisz wiadomość..." required></textarea>
-      <div data-netlify-recaptcha="true"></div>
-      <button type="submit" id="send-message" class="send-btn">Wyślij</button>
-    </form>
-  </div>
-</div>
-  <script src="script.js"></script>
+  
+  <script>
+    // Dane galerii zdjęć
+    const galleries = {
+      'sektor13': ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png'],
+      'pamietnikApp': ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png']
+    };
+
+    // Funkcja pokazująca galerię zdjęć w lightbox
+    function showGallery(name) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      
+      // Clear previous images
+      lightboxImg.innerHTML = '';
+      
+      // Create image carousel
+      galleries[name].forEach((img, index) => {
+        const imgElement = document.createElement('img');
+        imgElement.src = `images/${name}/${img}`;
+        imgElement.alt = `Project screenshot ${index + 1}`;
+        imgElement.classList.add('lightbox-content');
+        imgElement.style.display = index === 0 ? 'block' : 'none';
+        lightboxImg.appendChild(imgElement);
+      });
+      
+      // Show lightbox
+      lightbox.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      
+      // Set current index
+      let currentIndex = 0;
+      
+      // Navigation functions
+      function showImage(index) {
+        const images = lightboxImg.querySelectorAll('.lightbox-content');
+        images.forEach((img, i) => {
+          img.style.display = i === index ? 'block' : 'none';
+        });
+        currentIndex = index;
+      }
+      
+      // Setup navigation
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      
+      if (prevBtn && nextBtn) {
+        prevBtn.onclick = () => {
+          showImage((currentIndex - 1 + galleries[name].length) % galleries[name].length);
+        };
+        
+        nextBtn.onclick = () => {
+          showImage((currentIndex + 1) % galleries[name].length);
+        };
+      }
+    }
+
+    // Zamknij lightbox
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Przełączanie trybu ciemnego/jasnego
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle('light-theme');
+      
+      const themeIcon = document.getElementById('theme-icon');
+      if (body.classList.contains('light-theme')) {
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      } else {
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Walidacja formularza kontaktowego
+    function validateForm() {
+      const form = document.getElementById('contact-form');
+      const email = document.getElementById('email').value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (!emailRegex.test(email)) {
+        alert('Proszę podać poprawny adres email');
+        return false;
+      }
+      
+      // Symulacja wysłania formularza
+      setTimeout(() => {
+        form.reset();
+        alert('Wiadomość została wysłana! Dziękujemy za kontakt.');
+      }, 500);
+      
+      return false;
+    }
+
+    // Chat Widget
+    function setupChatWidget() {
+      const chatWidget = document.getElementById('chat-widget');
+      const minimizeBtn = document.getElementById('minimize-chat');
+      const chatMessages = document.getElementById('chat-messages');
+      const chatInput = document.getElementById('chat-input');
+      const userEmail = document.getElementById('user-email');
+      const sendBtn = document.getElementById('send-message');
+      const chatHeader = document.getElementById('chat-header');
+      const chatForm = document.querySelector('form[name="chat-form"]');
+
+      if (!chatWidget) return;
+
+      // Minimalizacja czatu
+      minimizeBtn?.addEventListener('click', () => {
+        chatWidget.classList.toggle('minimized');
+        minimizeBtn.innerHTML = chatWidget.classList.contains('minimized') ? '+' : '_';
+      });
+
+      // Wysyłanie wiadomości
+      sendBtn?.addEventListener('click', sendMessage);
+      chatInput?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+
+      // Obsługa wysyłania formularza
+      chatForm?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        sendMessage();
+      });
+
+      function sendMessage() {
+        if (sendBtn.disabled) return;
+        
+        const email = userEmail?.value.trim();
+        const message = chatInput?.value.trim();
+        
+        if (!validateEmail(email)) {
+          addMessage('Proszę podać poprawny adres email', 'admin');
+          return;
+        }
+        
+        if (!message) {
+          addMessage('Proszę wpisać wiadomość', 'admin');
+          return;
+        }
+        
+        // Dodaj wiadomość użytkownika
+        addMessage(message, 'user');
+        
+        // Wyślij formularz Netlify
+        if (chatForm) {
+          // Ustaw wartości pól
+          chatForm.querySelector('input[name="email"]').value = email;
+          chatForm.querySelector('textarea[name="message"]').value = message;
+          
+          // Wyślij formularz
+          chatForm.submit();
+          
+          // Wyczyść pola i pokaż potwierdzenie
+          setTimeout(() => {
+            userEmail.value = '';
+            chatInput.value = '';
+            addMessage('✔️ Wiadomość wysłana! Odpowiemy najszybciej jak to możliwe.', 'admin');
+          }, 500);
+          
+          // Tymczasowo zablokuj przycisk
+          sendBtn.disabled = true;
+          setTimeout(() => {
+            sendBtn.disabled = false;
+          }, 3000);
+        } else {
+          addMessage('❌ Błąd techniczny. Spróbuj ponownie później.', 'admin');
+        }
+      }
+
+      function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', sender);
+        messageDiv.textContent = text;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      // Przeciąganie czatu
+      let isDragging = false;
+      let offsetX, offsetY;
+      
+      chatHeader?.addEventListener('mousedown', (e) => {
+        if (e.target !== minimizeBtn) {
+          isDragging = true;
+          offsetX = e.clientX - chatWidget.getBoundingClientRect().left;
+          offsetY = e.clientY - chatWidget.getBoundingClientRect().top;
+          chatWidget.style.cursor = 'grabbing';
+        }
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          const x = e.clientX - offsetX;
+          const y = e.clientY - offsetY;
+          
+          const maxX = window.innerWidth - chatWidget.offsetWidth;
+          const maxY = window.innerHeight - chatWidget.offsetHeight;
+          
+          chatWidget.style.left = `${Math.max(0, Math.min(x, maxX))}px`;
+          chatWidget.style.top = `${Math.max(0, Math.min(y, maxY))}px`;
+        }
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+        chatWidget.style.cursor = 'default';
+      });
+    }
+
+    // Cookie Consent
+    function setupCookieConsent() {
+      const cookieBanner = document.getElementById('cookie-consent');
+      const acceptBtn = document.getElementById('accept-cookies');
+      const rejectBtn = document.getElementById('reject-cookies');
+
+      if (!cookieBanner) return;
+
+      if (!localStorage.getItem('cookies-accepted')) {
+        setTimeout(() => {
+          cookieBanner.style.display = 'block';
+        }, 2000);
+      }
+
+      acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem('cookies-accepted', 'true');
+        cookieBanner.style.display = 'none';
+        loadCookies();
+      });
+
+      rejectBtn?.addEventListener('click', () => {
+        localStorage.setItem('cookies-accepted', 'false');
+        cookieBanner.style.display = 'none';
+      });
+
+      function loadCookies() {
+        // Tutaj dodaj kod do ładowania usług, które wymagają cookies
+        console.log('Cookies zaakceptowane - ładowanie usług');
+      }
+    }
+
+    // Inicjalizacja po załadowaniu DOM
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toggle sidebar
+      const menuToggle = document.querySelector('.menu-toggle');
+      const sidebar = document.getElementById('sidebar');
+      
+      if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', () => {
+          sidebar.classList.toggle('open');
+          menuToggle.setAttribute('aria-expanded', sidebar.classList.contains('open'));
+        });
+      }
+      
+      // Close sidebar when clicking outside
+      document.addEventListener('click', (e) => {
+        if (sidebar?.classList.contains('open') && 
+            !sidebar.contains(e.target) && 
+            !menuToggle?.contains(e.target)) {
+          sidebar.classList.remove('open');
+          menuToggle?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+      // Initialize theme from localStorage
+      const savedTheme = localStorage.getItem('theme');
+      const body = document.body;
+      const themeIcon = document.getElementById('theme-icon');
+      
+      if (savedTheme === 'light') {
+        body.classList.add('light-theme');
+        if (themeIcon) themeIcon.textContent = '🌙';
+      } else {
+        body.classList.remove('light-theme');
+        if (themeIcon) themeIcon.textContent = '☀️';
+      }
+      
+      // Setup theme toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+      }
+      
+      // Setup contact form validation
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          validateForm();
+        });
+      }
+      
+      // Setup lightbox close button
+      const closeBtn = document.querySelector('.close-lightbox');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeLightbox);
+      }
+      
+      // Close lightbox when clicking outside content
+      document.addEventListener('click', (e) => {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox?.style.display === 'block' && e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+      
+      // Keyboard navigation for lightbox
+      document.addEventListener('keydown', (e) => {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox?.style.display === 'block') {
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') document.getElementById('prev-btn')?.click();
+          if (e.key === 'ArrowRight') document.getElementById('next-btn')?.click();
+        }
+      });
+
+      // Inicjalizacja widgetów
+      setupChatWidget();
+      setupCookieConsent();
+    });
+  </script>
 </body>
 </html>
