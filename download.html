@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DarkPrompt Studio – Do pobrania</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="header">
     <svg width="600" height="100" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
-      <!-- ten sam neonowy SVG -->
       <defs>
         <filter id="neonBlue" x="-50%" y="-50%" width="200%" height="200%">
           <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#3df0ff" flood-opacity="1" />
@@ -33,33 +33,95 @@
       <li><a href="projekty.html">Projekty</a></li>
       <li><a href="download.html" class="active">Do pobrania</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
+      <li><a href="prompty.html">Prompty</a></li>
     </ul>
   </nav>
 
   <main class="content">
-    <section>
-      <h1 class="page-title">Do pobrania</h1>
+    <section class="section">
+      <h1 class="section-title">Do pobrania</h1>
+      <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        Poniżej znajdziesz materiały do pobrania, w tym aplikacje mobilne, dokumentację oraz zasoby związane z moimi projektami. Wszystkie pliki są wolne od wirusów i gotowe do użycia.
+      </p>
+      
       <div class="download-cards">
         <div class="download-card">
           <h2>📱 Projekt 1 – APK</h2>
-          <p>Aplikacja mobilna do przetestowania.</p>
-          <a href="downloads/projekt1.apk" class="download-btn" download>Pobierz</a>
+          <p>Aplikacja mobilna do zarządzania zadaniami z ciemnym motywem i synchronizacją w chmurze. Wersja demonstracyjna do testowania funkcjonalności.</p>
+          <p><strong>Wersja:</strong> 1.2.3</p>
+          <p><strong>Rozmiar:</strong> 28.4 MB</p>
+          <a href="downloads/projekt1.apk" class="download-btn" download>Pobierz APK</a>
         </div>
+        
         <div class="download-card">
           <h2>📱 Projekt 2 – APK</h2>
-          <p>Nowoczesna aplikacja z ciemnym motywem.</p>
-          <a href="downloads/projekt2.apk" class="download-btn" download>Pobierz</a>
+          <p>Nowoczesna aplikacja do notowania pomysłów z funkcją rozpoznawania głosu i konwersji na tekst. Zoptymalizowana pod kątem szybkiego działania.</p>
+          <p><strong>Wersja:</strong> 2.0.1</p>
+          <p><strong>Rozmiar:</strong> 34.7 MB</p>
+          <a href="downloads/projekt2.apk" class="download-btn" download>Pobierz APK</a>
         </div>
+        
         <div class="download-card">
           <h2>📄 Portfolio PDF</h2>
-          <p>Moje najnowsze projekty w jednym miejscu.</p>
-          <a href="downloads/portfolio.pdf" class="download-btn" download>Pobierz</a>
+          <p>Kompletne portfolio moich projektów w formacie PDF. Zawiera opisy, technologie i zrzuty ekranów z najważniejszych realizacji.</p>
+          <p><strong>Wersja:</strong> 2025 Q1</p>
+          <p><strong>Rozmiar:</strong> 12.3 MB</p>
+          <a href="downloads/portfolio.pdf" class="download-btn" download>Pobierz Portfolio</a>
         </div>
+        
+        <div class="download-card">
+          <h2>🎨 UI Kit</h2>
+          <p>Zestaw komponentów interfejsu użytkownika w stylu DarkPrompt. Gotowe elementy do wykorzystania w projektach webowych i mobilnych.</p>
+          <p><strong>Forma:</strong> Figma & Adobe XD</p>
+          <p><strong>Rozmiar:</strong> 8.9 MB</p>
+          <a href="downloads/ui-kit.zip" class="download-btn" download>Pobierz UI Kit</a>
+        </div>
+        
+        <div class="download-card">
+          <h2>📚 Dokumentacja API</h2>
+          <p>Pełna dokumentacja techniczna API dla integracji z systemami zewnętrznymi. Zawiera przykłady użycia i opisy endpointów.</p>
+          <p><strong>Wersja:</strong> 3.1.0</p>
+          <p><strong>Rozmiar:</strong> 5.2 MB</p>
+          <a href="downloads/api-docs.pdf" class="download-btn" download>Pobierz Dokumentację</a>
+        </div>
+        
+        <div class="download-card">
+          <h2>🎓 Materiały szkoleniowe</h2>
+          <p>Zestaw prezentacji i ćwiczeń z zakresu tworzenia aplikacji webowych. Idealne dla początkujących i średniozaawansowanych developerów.</p>
+          <p><strong>Zawartość:</strong> PDF + przykładowy kod</p>
+          <p><strong>Rozmiar:</strong> 47.8 MB</p>
+          <a href="downloads/training-materials.zip" class="download-btn" download>Pobierz Materiały</a>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section">
+      <h2 class="section-title">Instrukcje instalacji</h2>
+      
+      <div class="card">
+        <h3>📱 Instalacja aplikacji na Android</h3>
+        <p>Aby zainstalować aplikację na urządzeniu z Androidem:</p>
+        <ol>
+          <li>Pobierz plik APK na swoje urządzenie</li>
+          <li>Otwórz plik (może być konieczne zezwolenie na instalację z nieznanych źródeł w ustawieniach bezpieczeństwa)</li>
+          <li>Postępuj zgodnie z instrukcjami instalatora</li>
+          <li>Po zakończeniu instalacji możesz uruchomić aplikację</li>
+        </ol>
+        <p><strong>Uwaga:</strong> Aplikacje są podpisane cyfrowo i bezpieczne do użytku.</p>
       </div>
     </section>
   </main>
 
-  <footer class="footer">© 2025 DarkPrompt Studio</footer>
+  <footer class="footer">
+    <div>© 2025 DarkPrompt Studio</div>
+    <div>NIP: 1234567890</div>
+    <div>REGON: 0987654321</div>
+  </footer>
+  
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <span id="theme-icon">☀️</span>
+  </button>
+  
   <script src="script.js"></script>
 </body>
 </html>

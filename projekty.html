@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DarkPrompt Studio – Projekty</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="header">
@@ -32,50 +33,82 @@
       <li><a href="projekty.html" class="active">Projekty</a></li>
       <li><a href="download.html">Do pobrania</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
+      <li><a href="prompty.html">Prompty</a></li>
     </ul>
   </nav>
 
   <main class="content">
-    <section>
-      <h1 class="page-title">Projekty</h1>
-      <div style="text-align: left; margin-bottom: 1.5rem;">
-        <a href="prompty.html">
-          <button style="
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 6px;
-            background-color: #4caf50;
-            border: none;
-            color: #121212;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-          ">
-            Prompty
-          </button>
+    <section class="section">
+      <h1 class="section-title">Moje Projekty</h1>
+      
+      <div style="margin-bottom: 2rem; text-align: center;">
+        <a href="prompty.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+          <span>Zobacz prompty</span> 🧠
         </a>
       </div>
+      
       <div class="gallery-grid" id="gallery">
-        <div class="project-card" data-gallery="sektor13" onclick="showGallery('sektor13')">
-          <img src="images/sektor13/3.png" alt="Sektor 13" />
-          <h3>Sektor 13</h3>
-          <p>Postapokaliptyczna gra strategiczna z mapą, budynkami i handlem.</p>
+        <div class="project-card" onclick="showGallery('sektor13')">
+          <img src="images/sektor13/3.png" alt="Sektor 13" loading="lazy" />
+          <h3>🎮 Sektor 13</h3>
+          <p>Postapokaliptyczna gra strategiczna z zarządzaniem zasobami, flotą i technologiami. Gracz buduje bazę, handluje z frakcjami i eksploruje niebezpieczny świat.</p>
+          <p><strong>Technologie:</strong> Unity, C#, Blender, Photoshop</p>
         </div>
-        <div class="project-card" data-gallery="pamietnikApp" onclick="showGallery('pamietnikApp')">
-          <img src="images/pamietnikApp/1.png" alt="Pamiętnik App" />
-          <h3>Pamiętnik App</h3>
-          <p>Minimalistyczna aplikacja mobilna do notowania emocji i codziennych myśli.</p>
+        
+        <div class="project-card" onclick="showGallery('pamietnikApp')">
+          <img src="images/pamietnikApp/1.png" alt="Pamiętnik App" loading="lazy" />
+          <h3>📘 Pamiętnik App</h3>
+          <p>Aplikacja do prowadzenia prywatnego dziennika z szyfrowaniem end-to-end. Funkcje: dodawanie zdjęć, tagowanie wpisów, statystyki nastrojów.</p>
+          <p><strong>Technologie:</strong> React Native, Node.js, MongoDB, AES-256</p>
         </div>
-      </div>
-
-      <div id="gallery-viewer" class="gallery-viewer" style="display:none;">
-        <button id="close-gallery">Zamknij galerię</button>
-        <div id="gallery-images" class="gallery-images"></div>
+        
+        <div class="project-card">
+          <img src="images/ai-cookbook.png" alt="AI Cookbook" loading="lazy" />
+          <h3>📚 AI Cookbook</h3>
+          <p>Inteligentna aplikacja kucharska generująca przepisy na podstawie dostępnych składników. Integracja z AI tworzy spersonalizowane propozycje z instrukcjami krok po kroku.</p>
+          <p><strong>Technologie:</strong> Python, Flask, OpenAI API, React, PostgreSQL</p>
+        </div>
+        
+        <div class="project-card">
+          <img src="images/weather-bot.png" alt="Weather Bot" loading="lazy" />
+          <h3>☀️ Weather Bot</h3>
+          <p>Chatbot pogodowy z interfejsem konwersacyjnym. Użytkownik pyta o pogodę w dowolnym miejscu, a bot odpowiada tekstem i wizualizacjami danych.</p>
+          <p><strong>Technologie:</strong> Node.js, Express, React, OpenWeather API, Chart.js</p>
+        </div>
+        
+        <div class="project-card">
+          <img src="images/resume-builder.png" alt="Resume Builder AI" loading="lazy" />
+          <h3>📄 Resume Builder AI</h3>
+          <p>Narzędzie do tworzenia profesjonalnych CV z sugestiami AI. System analizuje treść i sugeruje ulepszenia, generując gotowe dokumenty w PDF.</p>
+          <p><strong>Technologie:</strong> Vue.js, Node.js, Puppeteer, OpenAI API, Firebase</p>
+        </div>
+        
+        <div class="project-card">
+          <img src="images/finance-dashboard.png" alt="Finance Dashboard" loading="lazy" />
+          <h3>📊 Finance Dashboard</h3>
+          <p>Panel do zarządzania finansami osobistymi z automatyczną kategoryzacją wydatków, prognozowaniem i alertami. Integracja z bankami przez API.</p>
+          <p><strong>Technologie:</strong> React, Redux, D3.js, Node.js, Plaid API</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">© 2025 DarkPrompt Studio</footer>
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <div id="lightbox-img"></div>
+  </div>
+
+  <footer class="footer">
+    <div>© 2025 DarkPrompt Studio</div>
+    <div>NIP: 1234567890</div>
+    <div>REGON: 0987654321</div>
+  </footer>
+  
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <span id="theme-icon">☀️</span>
+  </button>
+  
   <script src="script.js"></script>
 </body>
 </html>

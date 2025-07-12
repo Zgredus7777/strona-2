@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Prompty – DarkPrompt Studio</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="header">
@@ -37,64 +38,136 @@
   </nav>
 
   <main class="content" id="content">
-    <section>
-  <h1 class="page-title">Prompty</h1>
-  <div class="gallery">
-    <div class="project-card">
-      <img src="" alt="Planner App">
-      <div class="project-info">
-        <h3>🧠 Planer zadań</h3>
-        <p>Stwórz nowoczesną aplikację do planowania zadań z ciemnym motywem i minimalistycznym interfejsem. Dodawanie, edycja i przypomnienia z poziomu smartfona. Technologia: Flutter.</p>
+    <section class="section">
+      <h1 class="section-title">Prompty</h1>
+      <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        Poniżej znajdziesz kolekcję moich promptów - gotowych szablonów do generowania treści, kodu i rozwiązań z użyciem sztucznej inteligencji. Możesz je wykorzystać w swoich projektach z ChatGPT, Midjourney i innych narzędzi AI.
+      </p>
+      
+      <div class="gallery-grid">
+        <div class="card">
+          <h3>🧠 Planer zadań</h3>
+          <p>Stwórz nowoczesną aplikację do planowania zadań z ciemnym motywem i minimalistycznym interfejsem. Dodawanie, edycja i przypomnienia z poziomu smartfona.</p>
+          <p><strong>Technologia:</strong> Flutter, Firebase</p>
+          <div class="prompt-code">
+            <pre>Stwórz koncepcję aplikacji do zarządzania zadaniami z ciemnym motywem w stylu cyberpunk. 
+Aplikacja powinna zawierać:
+- Kalendarz z widokiem dziennym/tygodniowym/miesięcznym
+- System kategorii zadań z możliwością dostosowania kolorów
+- Powiadomienia push o zbliżających się deadline'ach
+- Synchronizację między urządzeniami
+- Statystyki produktywności</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>🎮 Sektor 13</h3>
+          <p>Gra strategiczna osadzona w postapokaliptycznym świecie. Gracz zarządza bazą, flotą, badaniami i surowcami. Styl: neonowy, mroczny.</p>
+          <p><strong>Technologia:</strong> Unity, C#, Blender</p>
+          <div class="prompt-code">
+            <pre>Zaprojektuj mechanikę gry strategicznej w postapokaliptycznym świecie. 
+Gracz zarządza ostatnią ludzką bazą "Sektor 13". 
+Kluczowe elementy:
+- System budowy i rozbudowy bazy
+- Zarządzanie zasobami (żywność, woda, energia, surowce)
+- Badania technologiczne
+- System walki z mutantami
+- Handel z innymi ocalałymi grupami
+- Dynamiczne wydarzenia losowe</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>📘 Pamiętnik App</h3>
+          <p>Aplikacja do prowadzenia dziennika z możliwością dodawania zdjęć. Ciemny interfejs, przejrzysty układ wpisów i szybki dostęp do historii.</p>
+          <p><strong>Technologia:</strong> React Native, Node.js, MongoDB</p>
+          <div class="prompt-code">
+            <pre>Stwórz koncepcję aplikacji pamiętnika z szyfrowaniem end-to-end. 
+Funkcje:
+- Dodawanie wpisów tekstowych z tagami
+- Możliwość dołączania zdjęć
+- Wyszukiwanie po dacie, tagach i treści
+- Statystyki nastrojów na podstawie analizy sentymentu
+- Eksport danych do PDF
+- Ustawienia prywatności z opcją blokady biometrycznej</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>📚 AI Cookbook</h3>
+          <p>Interaktywna aplikacja kucharska oparta o AI. Użytkownik wpisuje, co ma w lodówce, a AI generuje przepisy z listą kroków i zdjęciami.</p>
+          <p><strong>Technologia:</strong> Python, Flask, OpenAI API, React</p>
+          <div class="prompt-code">
+            <pre>Zaprojektuj system rekomendacji przepisów kulinarnych oparty na AI. 
+Działanie aplikacji:
+1. Użytkownik wprowadza dostępne składniki
+2. System proponuje dopasowane przepisy
+3. AI generuje pełne instrukcje krok po kroku
+4. Możliwość dostosowania ilości porcji
+5. Generowanie listy zakupów brakujących składników
+6. Integracja z API dostawców żywności</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>☀️ Weather Bot</h3>
+          <p>Aplikacja pogodowa z funkcją czatu - użytkownik może zapytać, jaka będzie pogoda w dowolnym miejscu świata. AI odpowiada tekstem i grafiką.</p>
+          <p><strong>Technologia:</strong> Node.js, React, OpenWeather API, Chart.js</p>
+          <div class="prompt-code">
+            <pre>Stwórz koncepcję chatbot pogodowego z interfejsem konwersacyjnym. 
+Funkcje:
+- Pytania w formie naturalnej ("Jaka będzie pogoda w Krakowie w weekend?")
+- Odpowiedzi tekstowe z dodatkowymi informacjami (wilgotność, ciśnienie, UV)
+- Wizualizacje danych (wykresy temperatury, opadów)
+- Alerty pogodowe
+- Prognoza długoterminowa (7-14 dni)
+- Integracja z głównymi dostawcami danych pogodowych</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>📄 Resume Builder AI</h3>
+          <p>Narzędzie do generowania CV na podstawie prostego formularza. AI dopisuje opisy stanowisk, dba o styl i estetykę dokumentu.</p>
+          <p><strong>Technologia:</strong> Vue.js, Node.js, Puppeteer, OpenAI API</p>
+          <div class="prompt-code">
+            <pre>Zaprojektuj system generowania profesjonalnych CV z pomocą AI. 
+Kroki działania:
+1. Użytkownik wprowadza podstawowe dane (doświadczenie, edukacja, umiejętności)
+2. AI sugeruje optymalne sformułowania i słowa kluczowe
+3. Wybór szablonu dostosowanego do branży
+4. Generowanie CV w formacie PDF i HTML
+5. Analiza ATS (Applicant Tracking System)
+6. Sugestie ulepszeń na podstawie analizy rynku pracy</pre>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="project-card">
-      <img src="images/sektor13/1.png" alt="Sektor 13">
-      <div class="project-info">
-        <h3>🎮 Sektor 13</h3>
-        <p>Gra strategiczna osadzona w postapokaliptycznym świecie. Gracz zarządza bazą, flotą, badaniami i surowcami. Styl: neonowy, mroczny. Frontend: HTML + CSS, Backend: Flask.</p>
+    </section>
+    
+    <section class="section">
+      <h2 class="section-title">Jak korzystać z promptów?</h2>
+      
+      <div class="card">
+        <p>1. Wybierz prompt odpowiadający Twoim potrzebom</p>
+        <p>2. Skopiuj treść promptu do schowka</p>
+        <p>3. Wklej do narzędzia AI (ChatGPT, Midjourney, Claude, itp.)</p>
+        <p>4. Dostosuj prompt według własnych potrzeb</p>
+        <p>5. Użyj wygenerowanych wyników w swoim projekcie</p>
+        
+        <p><strong>Pro tip:</strong> Im bardziej szczegółowy prompt, tym lepsze rezultaty. Dodaj kontekst, specyfikacje techniczne i preferowany styl.</p>
       </div>
-    </div>
-
-    <div class="project-card">
-          <img src="images/pamietnikApp/1.png" alt="Sektor 13">
-      <div class="project-info">
-        <h3>📘 Pamiętnik App</h3>
-        <p>Aplikacja do prowadzenia dziennika z możliwością dodawania zdjęć. Ciemny interfejs, przejrzysty układ wpisów i szybki dostęp do historii. Idealna do notatek codziennych.</p>
-      </div>
-    </div>
-
-<div class="project-card">
-  <img src="images/ai-cookbook.png" alt="AI Cookbook">
-  <div class="project-info">
-    <h3>📚 AI Cookbook</h3>
-    <p>Stwórz interaktywną aplikację kucharską opartą o AI. Użytkownik wpisuje, co ma w lodówce, a AI generuje przepisy z listą kroków i zdjęciami. Backend: Python + OpenAI API.</p>
-  </div>
-</div>
-
-<div class="project-card">
-  <img src="images/weather-bot.png" alt="Weather Bot">
-  <div class="project-info">
-    <h3>☀️ Weather Bot</h3>
-    <p>Zaprojektuj aplikację pogodową z funkcją czatu – użytkownik może zapytać, jaka będzie pogoda jutro w dowolnym miejscu świata. AI odpowiada tekstem i grafiką. Frontend: React, Backend: Node.js.</p>
-  </div>
-</div>
-
-<div class="project-card">
-  <img src="images/resume-builder.png" alt="Resume Builder AI">
-  <div class="project-info">
-    <h3>📄 Resume Builder AI</h3>
-    <p>Stwórz narzędzie do generowania CV na podstawie prostego formularza. AI dopisuje opisy stanowisk, dba o styl i estetykę dokumentu. Eksport do PDF. Frontend: Vue.js, Backend: Flask.</p>
-  </div>
-</div>
-  </div>
-</section>
+    </section>
   </main>
 
-  <footer>
-    © 2025 DarkPrompt Studio
+  <footer class="footer">
+    <div>© 2025 DarkPrompt Studio</div>
+    <div>NIP: 1234567890</div>
+    <div>REGON: 0987654321</div>
   </footer>
-
+  
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <span id="theme-icon">☀️</span>
+  </button>
+  
   <script src="script.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DarkPrompt Studio – Kontakt</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="header">
@@ -32,28 +33,103 @@
       <li><a href="projekty.html">Projekty</a></li>
       <li><a href="download.html">Do pobrania</a></li>
       <li><a href="kontakt.html" class="active">Kontakt</a></li>
+      <li><a href="prompty.html">Prompty</a></li>
     </ul>
   </nav>
 
   <main class="content">
-    <section>
-      <h1 class="page-title">Kontakt</h1>
-      <form id="contact-form">
-        <label for="name">Imię:</label>
-        <input type="text" id="name" name="name" required placeholder="Twoje imię">
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required placeholder="Twój email">
-
-        <label for="message">Wiadomość:</label>
-        <textarea id="message" name="message" rows="5" required placeholder="Twoja wiadomość"></textarea>
-
-        <button type="submit">Wyślij</button>
-      </form>
+    <section class="section">
+      <h1 class="section-title">Skontaktuj się</h1>
+      
+      <div class="card-grid" style="margin-bottom: 3rem;">
+        <div class="card">
+          <h3>📞 Bezpośredni kontakt</h3>
+          <p><strong>Telefon:</strong> +48 513 092 388</p>
+          <p><strong>Email:</strong> maloblockimarcin2@gmail.com</p>
+          <p><strong>Godziny pracy:</strong> Pon-Pt: 9:00-17:00</p>
+        </div>
+        
+        <div class="card">
+          <h3>📍 Adres</h3>
+          <p>DarkPrompt Studio</p>
+          <p>ul. Stary Rynek 4/3</p>
+          <p>87-890 Lubraniec</p>
+          <p>Polska</p>
+        </div>
+        
+        <div class="card">
+          <h3>🌐 Social Media</h3>
+          <p><strong>GitHub:</strong> github.com/darkprompt</p>
+          <p><strong>LinkedIn:</strong> linkedin.com/in/darkprompt</p>
+          <p><strong>Dribbble:</strong> dribbble.com/darkprompt</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3>✉️ Wyślij wiadomość</h3>
+        <form id="contact-form" onsubmit="return validateForm()">
+          <div class="form-group">
+            <label for="name">Imię i nazwisko:</label>
+            <input type="text" id="name" name="name" required placeholder="Twoje imię i nazwisko">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Adres email:</label>
+            <input type="email" id="email" name="email" required placeholder="Twój adres email">
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Temat wiadomości:</label>
+            <input type="text" id="subject" name="subject" required placeholder="Temat wiadomości">
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Wiadomość:</label>
+            <textarea id="message" name="message" rows="6" required placeholder="Twoja wiadomość..."></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label>
+              <input type="checkbox" required>
+              Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie
+            </label>
+          </div>
+          
+          <button type="submit">Wyślij wiadomość</button>
+        </form>
+      </div>
+    </section>
+    
+    <section class="section">
+      <h2 class="section-title">Często zadawane pytania</h2>
+      
+      <div class="card">
+        <h3>Jak długo trwa realizacja projektu?</h3>
+        <p>Czas realizacji zależy od skali i złożoności projektu. Proste strony wizytówkowe realizujemy w 2-4 tygodnie, podczas gdy złożone aplikacje mogą wymagać 3-6 miesięcy pracy. Po analizie wymagań przedstawiamy szczegółowy harmonogram.</p>
+      </div>
+      
+      <div class="card">
+        <h3>Jakie są koszty współpracy?</h3>
+        <p>Koszty zależą od zakresu projektu. Oferujemy elastyczne modele współpracy: stała cena za projekt, stawka godzinowa lub abonament. Po poznaniu Twoich potrzeb przygotujemy indywidualną wycenę.</p>
+      </div>
+      
+      <div class="card">
+        <h3>Czy oferujecie wsparcie po wdrożeniu?</h3>
+        <p>Tak, zapewniamy kompleksowe wsparcie posprzedażowe. Oferujemy pakiety serwisowe obejmujące aktualizacje, poprawki bezpieczeństwa, optymalizację wydajności i wsparcie techniczne.</p>
+      </div>
     </section>
   </main>
 
-  <footer class="footer">© 2025 DarkPrompt Studio</footer>
+  <footer class="footer">
+    <div>© 2025 DarkPrompt Studio</div>
+    <div></div>
+    <div></div>
+  </footer>
+  
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <span id="theme-icon">☀️</span>
+  </button>
+  
   <script src="script.js"></script>
 </body>
 </html>
