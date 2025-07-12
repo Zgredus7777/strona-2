@@ -25,6 +25,32 @@ function showGallery(name) {
   // Show lightbox
   lightbox.style.display = 'block';
   document.body.style.overflow = 'hidden';
+  
+  // Set current index
+  let currentIndex = 0;
+  
+  // Navigation functions
+  function showImage(index) {
+    const images = lightboxImg.querySelectorAll('.lightbox-content');
+    images.forEach((img, i) => {
+      img.style.display = i === index ? 'block' : 'none';
+    });
+    currentIndex = index;
+  }
+  
+  // Setup navigation
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  
+  if (prevBtn && nextBtn) {
+    prevBtn.onclick = () => {
+      showImage((currentIndex - 1 + galleries[name].length) % galleries[name].length);
+    };
+    
+    nextBtn.onclick = () => {
+      showImage((currentIndex + 1) % galleries[name].length);
+    };
+  }
 }
 
 // Zamknij lightbox
@@ -111,44 +137,26 @@ function setupChatWidget() {
       return;
     }
     
-    // Sprawdź recaptcha
-    const recaptcha = grecaptcha?.getResponse();
-    if (!recaptcha) {
-      addMessage('Proszę potwierdzić, że nie jesteś robotem', 'admin');
-      return;
-    }
-    
     // Dodaj wiadomość użytkownika
     addMessage(message, 'user');
-    sendBtn.disabled = true;
     
-    // Wyślij wiadomość
-    fetch('send-message.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        email: email, 
-        message: message,
-        recaptcha: recaptcha
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        addMessage('✔️ Wiadomość wysłana! Odpowiemy najszybciej jak to możliwe.', 'admin');
-      } else {
-        addMessage(`❌ ${data.error || 'Błąd wysyłania'}`, 'admin');
-      }
-    })
-    .catch(error => {
-      addMessage('❌ Błąd połączenia. Spróbuj ponownie później.', 'admin');
-      console.error('Fetch error:', error);
-    })
-    .finally(() => {
-      if (grecaptcha) grecaptcha.reset();
+    // Wyślij formularz Netlify
+    const form = document.querySelector('form[name="chat-form"]');
+    if (form) {
+      // Ustaw wartości pól
+      form.querySelector('input[name="email"]').value = email;
+      form.querySelector('textarea[name="message"]').value = message;
+      
+      // Wyślij formularz
+      form.submit();
+      
+      // Wyczyść pola i pokaż potwierdzenie
+      userEmail.value = '';
       chatInput.value = '';
-      sendBtn.disabled = false;
-    });
+      addMessage('✔️ Wiadomość wysłana! Odpowiemy najszybciej jak to możliwe.', 'admin');
+    } else {
+      addMessage('❌ Błąd techniczny. Spróbuj ponownie później.', 'admin');
+    }
   }
 
   function addMessage(text, sender) {
@@ -289,6 +297,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightbox = document.getElementById('lightbox');
     if (lightbox?.style.display === 'block' && e.target === lightbox) {
       closeLightbox();
+    }
+  });
+  
+  // Keyboard navigation for lightbox
+  document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox?.style.display === 'block') {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') document.getElementById('prev-btn')?.click();
+      if (e.key === 'ArrowRight') document.getElementById('next-btn')?.click();
     }
   });
 

@@ -1055,3 +1055,9 @@ body {
   transform: scale(0.85);
   transform-origin: 0 0;
 }
+/* Styl reCAPTCHA */
+div[data-netlify-recaptcha] > div {
+  margin: 10px auto;
+  transform: scale(0.9);
+  transform-origin: center;
+}

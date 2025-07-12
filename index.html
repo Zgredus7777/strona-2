@@ -12,6 +12,10 @@
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
+  <form name="hidden-form" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="email">
+  <textarea name="message"></textarea>
+</form>
   <!-- Lightbox dla galerii -->
   <div id="lightbox" class="lightbox">
     <span class="close-lightbox">&times;</span>
@@ -173,25 +177,26 @@
     </div>
   </div>
 
-  <!-- Widget czatu -->
-  <div id="chat-widget" class="chat-widget">
-    <div id="chat-header" class="chat-header">
-      <span>Czat z DarkPrompt</span>
-      <button id="minimize-chat" class="minimize-btn">_</button>
-    </div>
-    <div id="chat-messages" class="chat-messages">
-      <div class="message admin">
-        👋 Witaj! Jak możemy Ci pomóc?
-      </div>
-    </div>
-    <div id="chat-input-area" class="chat-input-area">
-      <input type="email" id="user-email" placeholder="Twój email" required>
-      <textarea id="chat-input" placeholder="Napisz wiadomość..." required></textarea>
-      <div class="g-recaptcha" data-sitekey="6LfO1IArAAAAAG63UegkKkafLLMQSdbPEVSwnsaR"></div>
-      <button id="send-message" class="send-btn">Wyślij</button>
+<!-- Widget czatu -->
+<div id="chat-widget" class="chat-widget">
+  <div id="chat-header" class="chat-header">
+    <span>Czat z DarkPrompt</span>
+    <button id="minimize-chat" class="minimize-btn">_</button>
+  </div>
+  <div id="chat-messages" class="chat-messages">
+    <div class="message admin">
+      👋 Witaj! Jak możemy Ci pomóc?
     </div>
   </div>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <div id="chat-input-area" class="chat-input-area">
+    <form name="chat-form" method="POST" data-netlify="true" netlify-recaptcha="true">
+      <input type="email" id="user-email" name="email" placeholder="Twój email" required>
+      <textarea id="chat-input" name="message" placeholder="Napisz wiadomość..." required></textarea>
+      <div data-netlify-recaptcha="true"></div>
+      <button type="submit" id="send-message" class="send-btn">Wyślij</button>
+    </form>
+  </div>
+</div>
   <script src="script.js"></script>
 </body>
 </html>

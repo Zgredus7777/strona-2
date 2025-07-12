@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 // Konfiguracja
-$secretKey = "ALTOINAAAAAS_izksemAPEhilk5PoljaMYF4"; // Twój tajny klucz reCAPTCHA
+$secretKey = "6LfN1IArAAAAAJm_EC6EeP4vhJOwwnCFfVK3Eqev"; // Twój tajny klucz reCAPTCHA
 $to = 'twoj@email.com'; // Tutaj wpisz swój prawdziwy adres email
 $from = 'kontakt@darkpromptstudio.pl'; // Adres email nadawcy
 

@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DarkPrompt Studio – Projekty</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22neonGradient%22 x1=%220%%22 y1=%220%%22 x2=%22100%%22 y2=%22100%%22><stop offset=%220%%22 stop-color=%22%2300ffff%22/><stop offset=%2250%%22 stop-color=%22%233df0ff%22/><stop offset=%22100%%22 stop-color=%22%230077ff%22/></linearGradient><filter id=%22neonEffect%22 x=%22-20%%22 y=%22-20%%22 width=%22140%%22 height=%22140%%22><feGaussianBlur in=%22SourceAlpha%22 stdDeviation=%224%22 result=%22blur%22/><feColorMatrix in=%22blur%22 type=%22matrix%22 values=%220 0 0 0 0.2 0 0 0 0 0.9 0 0 0 0 1 0 0 0 1 0%22 result=%22glow%22/><feComposite in=%22SourceGraphic%22 in2=%22glow%22 operator=%22over%22/></filter><pattern id=%22circuitPattern%22 width=%2220%22 height=%2220%22 patternUnits=%22userSpaceOnUse%22><path d=%22M0,0 L20,20 M20,0 L0,20%22 stroke=%22%233df0ff%22 stroke-width=%220.5%22 opacity=%220.3%22/></pattern></defs><rect width=%22100%%22 height=%22100%%22 fill=%22%230a0a14%22/><rect width=%22100%%22 height=%22100%%22 fill=%22url(%23circuitPattern)%22/><circle cx=%2250%22 cy=%2250%22 r=%2225%22 fill=%22none%22 stroke=%22url(%23neonGradient)%22 stroke-width=%224%22 filter=%22url(%23neonEffect)%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22none%22 stroke=%22%233df0ff%22 stroke-width=%221%22 stroke-dasharray=%223,3%22 opacity=%220.7%22/><circle cx=%2250%22 cy=%2250%22 r=%2235%22 fill=%22none%22 stroke=%22%233df0ff%22 stroke-width=%221%22 stroke-dasharray=%223,3%22 opacity=%220.7%22/><circle cx=%2265%22 cy=%2250%22 r=%223%22 fill=%22%233df0ff%22 filter=%22url(%23neonEffect)%22/><circle cx=%2250%22 cy=%2235%22 r=%223%22 fill=%22%2300ffff%22 filter=%22url(%23neonEffect)%22/><circle cx=%2235%22 cy=%2265%22 r=%223%22 fill=%22%230077ff%22 filter=%22url(%23neonEffect)%22/><path d=%22M45,35 L45,65 C45,70 50,70 52,68 L58,62 C60,60 60,55 58,53 L52,47 C50,45 45,45 45,50 Z%22 fill=%22none%22 stroke=%22white%22 stroke-width=%222%22/></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
   <header class="header">
@@ -53,6 +56,10 @@
           <h3>🎮 Sektor 13</h3>
           <p>Postapokaliptyczna gra strategiczna z zarządzaniem zasobami, flotą i technologiami. Gracz buduje bazę, handluje z frakcjami i eksploruje niebezpieczny świat.</p>
           <p><strong>Technologie:</strong> Unity, C#, Blender, Photoshop</p>
+          <div class="project-buttons">
+            <button class="btn-small" onclick="event.stopPropagation(); window.open('https://github.com/project1', '_blank');">GitHub</button>
+            <button class="btn-small" onclick="event.stopPropagation(); showGallery('sektor13')">Galeria</button>
+          </div>
         </div>
         
         <div class="project-card" onclick="showGallery('pamietnikApp')">
@@ -60,6 +67,10 @@
           <h3>📘 Pamiętnik App</h3>
           <p>Aplikacja do prowadzenia prywatnego dziennika z szyfrowaniem end-to-end. Funkcje: dodawanie zdjęć, tagowanie wpisów, statystyki nastrojów.</p>
           <p><strong>Technologie:</strong> React Native, Node.js, MongoDB, AES-256</p>
+          <div class="project-buttons">
+            <button class="btn-small" onclick="event.stopPropagation(); window.open('https://github.com/project2', '_blank');">GitHub</button>
+            <button class="btn-small" onclick="event.stopPropagation(); showGallery('pamietnikApp')">Galeria</button>
+          </div>
         </div>
         
         <div class="project-card">
@@ -67,6 +78,10 @@
           <h3>📚 AI Cookbook</h3>
           <p>Inteligentna aplikacja kucharska generująca przepisy na podstawie dostępnych składników. Integracja z AI tworzy spersonalizowane propozycje z instrukcjami krok po kroku.</p>
           <p><strong>Technologie:</strong> Python, Flask, OpenAI API, React, PostgreSQL</p>
+          <div class="project-buttons">
+            <button class="btn-small" onclick="window.open('https://github.com/project3', '_blank');">GitHub</button>
+            <button class="btn-small" onclick="alert('Demo wkrótce dostępne!');">Demo</button>
+          </div>
         </div>
         
         <div class="project-card">
@@ -74,6 +89,10 @@
           <h3>☀️ Weather Bot</h3>
           <p>Chatbot pogodowy z interfejsem konwersacyjnym. Użytkownik pyta o pogodę w dowolnym miejscu, a bot odpowiada tekstem i wizualizacjami danych.</p>
           <p><strong>Technologie:</strong> Node.js, Express, React, OpenWeather API, Chart.js</p>
+          <div class="project-buttons">
+            <button class="btn-small" onclick="window.open('https://github.com/project4', '_blank');">GitHub</button>
+            <button class="btn-small" onclick="window.open('https://weather-demo.darkpromptstudio.pl', '_blank');">Demo</button>
+          </div>
         </div>
         
         <div class="project-card">
@@ -81,6 +100,10 @@
           <h3>📄 Resume Builder AI</h3>
           <p>Narzędzie do tworzenia profesjonalnych CV z sugestiami AI. System analizuje treść i sugeruje ulepszenia, generując gotowe dokumenty w PDF.</p>
           <p><strong>Technologie:</strong> Vue.js, Node.js, Puppeteer, OpenAI API, Firebase</p>
+          <div class="project-buttons">
+            <button class="btn-small" onclick="window.open('https://github.com/project5', '_blank');">GitHub</button>
+            <button class="btn-small" onclick="window.open('https://cv-builder.darkpromptstudio.pl', '_blank');">Demo</button>
+          </div>
         </div>
         
         <div class="project-card">
@@ -88,6 +111,10 @@
           <h3>📊 Finance Dashboard</h3>
           <p>Panel do zarządzania finansami osobistymi z automatyczną kategoryzacją wydatków, prognozowaniem i alertami. Integracja z bankami przez API.</p>
           <p><strong>Technologie:</strong> React, Redux, D3.js, Node.js, Plaid API</p>
+          <div class="project-buttons">
+            <button class="btn-small" onclick="window.open('https://github.com/project6', '_blank');">GitHub</button>
+            <button class="btn-small" onclick="window.open('https://finance-demo.darkpromptstudio.pl', '_blank');">Demo</button>
+          </div>
         </div>
       </div>
     </section>
@@ -95,8 +122,12 @@
 
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox">
-    <span class="close-lightbox">&times;</span>
-    <div id="lightbox-img"></div>
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <div id="lightbox-img" class="lightbox-content-container"></div>
+    <div class="lightbox-controls">
+      <button id="prev-btn" class="lightbox-btn">❮</button>
+      <button id="next-btn" class="lightbox-btn">❯</button>
+    </div>
   </div>
 
   <footer class="footer">
@@ -105,9 +136,116 @@
     <div>REGON: 0987654321</div>
   </footer>
   
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent" class="cookie-banner">
+    <div class="cookie-content">
+      <p>Ta strona używa plików cookies w celu poprawnego działania. Klikając "Akceptuj", wyrażasz zgodę na użycie wszystkich plików cookies.</p>
+      <div class="cookie-buttons">
+        <button id="accept-cookies" class="cookie-btn">Akceptuj</button>
+        <button id="reject-cookies" class="cookie-btn">Odrzuć</button>
+        <a href="/polityka-prywatnosci.html" class="cookie-link">Polityka prywatności</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Widget czatu -->
+  <div id="chat-widget" class="chat-widget">
+    <div id="chat-header" class="chat-header">
+      <span>Czat z DarkPrompt</span>
+      <button id="minimize-chat" class="minimize-btn">_</button>
+    </div>
+    <div id="chat-messages" class="chat-messages">
+      <div class="message admin">
+        👋 Witaj! Jak możemy Ci pomóc?
+      </div>
+    </div>
+    <div id="chat-input-area" class="chat-input-area">
+      <input type="email" id="user-email" placeholder="Twój email" required>
+      <textarea id="chat-input" placeholder="Napisz wiadomość..." required></textarea>
+      <div class="g-recaptcha" data-sitekey="6LfO1IArAAAAAG63UegkKkafLLMQSdbPEVSwnsaR"></div>
+      <button id="send-message" class="send-btn">Wyślij</button>
+    </div>
+  </div>
+  
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
     <span id="theme-icon">☀️</span>
   </button>
+  
+  <script>
+    // Dane galerii zdjęć
+    const galleries = {
+      'sektor13': ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png'],
+      'pamietnikApp': ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png']
+    };
+
+    // Funkcja pokazująca galerię zdjęć w lightbox
+    function showGallery(name) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      
+      // Clear previous images
+      lightboxImg.innerHTML = '';
+      
+      // Create image carousel
+      galleries[name].forEach((img, index) => {
+        const imgElement = document.createElement('img');
+        imgElement.src = `images/${name}/${img}`;
+        imgElement.alt = `Project screenshot ${index + 1}`;
+        imgElement.classList.add('lightbox-content');
+        imgElement.style.display = index === 0 ? 'block' : 'none';
+        lightboxImg.appendChild(imgElement);
+      });
+      
+      // Show lightbox
+      lightbox.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      
+      // Set current index
+      let currentIndex = 0;
+      
+      // Navigation functions
+      function showImage(index) {
+        const images = lightboxImg.querySelectorAll('.lightbox-content');
+        images.forEach((img, i) => {
+          img.style.display = i === index ? 'block' : 'none';
+        });
+        currentIndex = index;
+      }
+      
+      // Setup navigation
+      document.getElementById('prev-btn').onclick = () => {
+        showImage((currentIndex - 1 + galleries[name].length) % galleries[name].length);
+      };
+      
+      document.getElementById('next-btn').onclick = () => {
+        showImage((currentIndex + 1) % galleries[name].length);
+      };
+    }
+
+    // Zamknij lightbox
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Obsługa kliknięcia na tło lightbox
+    document.addEventListener('click', (e) => {
+      const lightbox = document.getElementById('lightbox');
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+    
+    // Obsługa klawiszy w lightbox
+    document.addEventListener('keydown', (e) => {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox.style.display === 'block') {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') document.getElementById('prev-btn').click();
+        if (e.key === 'ArrowRight') document.getElementById('next-btn').click();
+      }
+    });
+  </script>
   
   <script src="script.js"></script>
 </body>
