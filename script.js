@@ -103,6 +103,7 @@ function setupChatWidget() {
   const userEmail = document.getElementById('user-email');
   const sendBtn = document.getElementById('send-message');
   const chatHeader = document.getElementById('chat-header');
+  const chatForm = document.querySelector('form[name="chat-form"]');
 
   if (!chatWidget) return;
 
@@ -119,6 +120,12 @@ function setupChatWidget() {
       e.preventDefault();
       sendMessage();
     }
+  });
+
+  // Obsługa wysyłania formularza
+  chatForm?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    sendMessage();
   });
 
   function sendMessage() {
@@ -141,19 +148,26 @@ function setupChatWidget() {
     addMessage(message, 'user');
     
     // Wyślij formularz Netlify
-    const form = document.querySelector('form[name="chat-form"]');
-    if (form) {
+    if (chatForm) {
       // Ustaw wartości pól
-      form.querySelector('input[name="email"]').value = email;
-      form.querySelector('textarea[name="message"]').value = message;
+      chatForm.querySelector('input[name="email"]').value = email;
+      chatForm.querySelector('textarea[name="message"]').value = message;
       
       // Wyślij formularz
-      form.submit();
+      chatForm.submit();
       
       // Wyczyść pola i pokaż potwierdzenie
-      userEmail.value = '';
-      chatInput.value = '';
-      addMessage('✔️ Wiadomość wysłana! Odpowiemy najszybciej jak to możliwe.', 'admin');
+      setTimeout(() => {
+        userEmail.value = '';
+        chatInput.value = '';
+        addMessage('✔️ Wiadomość wysłana! Odpowiemy najszybciej jak to możliwe.', 'admin');
+      }, 500);
+      
+      // Tymczasowo zablokuj przycisk
+      sendBtn.disabled = true;
+      setTimeout(() => {
+        sendBtn.disabled = false;
+      }, 3000);
     } else {
       addMessage('❌ Błąd techniczny. Spróbuj ponownie później.', 'admin');
     }
