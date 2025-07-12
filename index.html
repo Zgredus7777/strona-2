@@ -8,8 +8,16 @@
   <title>DarkPrompt Studio</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
+  <!-- Lightbox dla galerii -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <div id="lightbox-img" class="lightbox-content-container"></div>
+  </div>
+
   <header class="header">
     <svg width="600" height="100" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -89,7 +97,7 @@
         
         <div class="card">
           <h3>🚀 Nowoczesne technologie</h3>
-          <p>Korzystamy z najnowszych frameworków i bibliotek, zapewniając innowacyjne rozwiązania dopasowane do Twoich potrzeb.</p>
+          <p>Korzystamy z najnowszych frameworków i bibliotek, zapewniając innowacyjne rozwiązacje dopasowane do Twoich potrzeb.</p>
         </div>
         
         <div class="card">
@@ -123,12 +131,34 @@
         </div>
       </div>
     </section>
+
+    <!-- Sekcja portfolio z galerią -->
+    <section class="section">
+      <h2 class="section-title">Nasze Projekty</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item" onclick="showGallery('sektor13')">
+          <img src="images/sektor13/thumb.jpg" alt="Sektor13">
+          <h3>Sektor13</h3>
+          <p>Aplikacja do zarządzania zespołem developerskim</p>
+        </div>
+        <div class="portfolio-item" onclick="showGallery('pamietnikApp')">
+          <img src="images/pamietnikApp/thumb.jpg" alt="PamiętnikApp">
+          <h3>PamiętnikApp</h3>
+          <p>Elektroniczny dziennik z funkcją analizy nastroju</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
     <div>© 2025 DarkPrompt Studio</div>
     <div>NIP: 1234567890</div>
     <div>REGON: 0987654321</div>
+    <div>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <span id="theme-icon">☀️</span>
+      </button>
+    </div>
   </footer>
 
   <!-- Cookie Consent Banner -->
@@ -143,29 +173,25 @@
     </div>
   </div>
 
-   <!-- Widget czatu -->
-  <div id="chat-widget">
-    <div id="chat-header">
+  <!-- Widget czatu -->
+  <div id="chat-widget" class="chat-widget">
+    <div id="chat-header" class="chat-header">
       <span>Czat z DarkPrompt</span>
-      <button id="minimize-chat">_</button>
+      <button id="minimize-chat" class="minimize-btn">_</button>
     </div>
-    <div id="chat-messages">
+    <div id="chat-messages" class="chat-messages">
       <div class="message admin">
         👋 Witaj! Jak możemy Ci pomóc?
       </div>
     </div>
-    <div id="chat-input-area">
+    <div id="chat-input-area" class="chat-input-area">
       <input type="email" id="user-email" placeholder="Twój email" required>
       <textarea id="chat-input" placeholder="Napisz wiadomość..." required></textarea>
-      <div class="g-recaptcha" data-sitekey="TWÓJ_KLUCZ_RECAPTCHA"></div>
-      <button id="send-message">Wyślij</button>
+      <div class="g-recaptcha" data-sitekey="6LfO1IArAAAAAG63UegkKkafLLMQSdbPEVSwnsaR"></div>
+      <button id="send-message" class="send-btn">Wyślij</button>
     </div>
   </div>
-  
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-    <span id="theme-icon">☀️</span>
-  </button>
-  
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="script.js"></script>
 </body>
 </html>
