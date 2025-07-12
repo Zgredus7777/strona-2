@@ -1,13 +1,20 @@
 <?php
-    $to = 'maloblockimarcin2@gmail.com'; // Tutaj wpisz prawidłowy adres e-mail odbiorcy
-    $subject = 'Testowy email';
-    $message = 'To jest testowa wiadomość';
-    $headers = 'From: test@example.com' . "\r\n" .
-               'Content-Type: text/plain; charset=UTF-8';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    if(mail($to, $subject, $message, $headers)) {
-        echo 'E-mail wysłany pomyślnie';
-    } else {
-        echo 'Błąd podczas wysyłania e-maila';
-    }
+$to = 'maloblockimarcin2@gmail.com'; // UŻYJ PRAWDZIWEGO ADRESU!
+$subject = 'Test PHP mail';
+$message = 'To jest testowa wiadomość. Jeśli to widzisz, PHP działa.';
+$headers = 'From: maloblockimarcin2@gmail.com' . "\r\n" .
+           'Reply-To: maloblockimarcin2@gmail.com' . "\r\n" .
+           'Content-Type: text/plain; charset=UTF-8';
+
+if(mail($to, $subject, $message, $headers)) {
+    echo 'E-mail WYSLANY - sprawdź skrzynkę (oraz SPAM)';
+} else {
+    echo 'BLAD: Funkcja mail() zwróciła false';
+}
+
+// Dodatkowe logowanie
+file_put_contents('mail_log.txt', date('Y-m-d H:i:s')." - Próba wysłania do: $to\n", FILE_APPEND);
 ?>
