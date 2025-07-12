@@ -200,3 +200,161 @@ document.addEventListener('DOMContentLoaded', () => {
     chatWidget.style.cursor = 'default';
   });
 });
+// Cookie Consent
+document.addEventListener('DOMContentLoaded', () => {
+  const cookieBanner = document.getElementById('cookie-consent');
+  const acceptBtn = document.getElementById('accept-cookies');
+  const rejectBtn = document.getElementById('reject-cookies');
+  
+  // Sprawdź, czy użytkownik już wyraził zgodę
+  if (!localStorage.getItem('cookies-accepted')) {
+    setTimeout(() => {
+      cookieBanner.style.display = 'block';
+    }, 2000);
+  }
+  
+  // Akceptacja cookies
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookies-accepted', 'true');
+    cookieBanner.style.display = 'none';
+    loadCookies();
+  });
+  
+  // Odrzucenie cookies
+  rejectBtn.addEventListener('click', () => {
+    localStorage.setItem('cookies-accepted', 'false');
+    cookieBanner.style.display = 'none';
+  });
+  
+  function loadCookies() {
+    // Tutaj dodaj kod do ładowania usług, które wymagają cookies
+    console.log('Cookies zaakceptowane - ładowanie usług');
+  }
+});
+
+// Chat widget
+document.addEventListener('DOMContentLoaded', () => {
+  const chatWidget = document.getElementById('chat-widget');
+  const minimizeBtn = document.getElementById('minimize-chat');
+  const chatMessages = document.getElementById('chat-messages');
+  const chatInput = document.getElementById('chat-input');
+  const userEmail = document.getElementById('user-email');
+  const sendBtn = document.getElementById('send-message');
+  
+  // Minimalizacja czatu
+  minimizeBtn.addEventListener('click', () => {
+    chatWidget.classList.toggle('minimized');
+    if (chatWidget.classList.contains('minimized')) {
+      minimizeBtn.innerHTML = '+';
+    } else {
+      minimizeBtn.innerHTML = '_';
+    }
+  });
+  
+  // Wysyłanie wiadomości
+  sendBtn.addEventListener('click', sendMessage);
+  
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+  
+  function sendMessage() {
+    const email = userEmail.value.trim();
+    const message = chatInput.value.trim();
+    
+    if (!validateEmail(email)) {
+      addMessage('Proszę podać poprawny adres email', 'admin');
+      return;
+    }
+    
+    if (!message) {
+      addMessage('Proszę wpisać wiadomość', 'admin');
+      return;
+    }
+    
+    // Sprawdź recaptcha
+    const recaptcha = grecaptcha.getResponse();
+    if (!recaptcha) {
+      addMessage('Proszę potwierdzić, że nie jesteś robotem', 'admin');
+      return;
+    }
+    
+    // Dodaj wiadomość użytkownika
+    addMessage(message, 'user');
+    
+    // Wyślij wiadomość
+    fetch('send-message.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        email: email, 
+        message: message,
+        recaptcha: recaptcha
+      })
+    })
+    .then(response => response.text())
+    .then(data => {
+      if (data === 'success') {
+        addMessage('✔️ Wiadomość wysłana! Odpowiemy najszybciej jak to możliwe.', 'admin');
+      } else {
+        addMessage('❌ Błąd wysyłania. Spróbuj ponownie lub napisz na kontakt@darkpromptstudio.pl', 'admin');
+      }
+      grecaptcha.reset();
+    })
+    .catch(error => {
+      addMessage('❌ Błąd połączenia: ' + error.message, 'admin');
+      grecaptcha.reset();
+    });
+    
+    // Wyczyść pola
+    chatInput.value = '';
+  }
+  
+  function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', sender);
+    messageDiv.textContent = text;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+  
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+  
+  // Przeciąganie czatu
+  let isDragging = false;
+  let offsetX, offsetY;
+  
+  chatHeader.addEventListener('mousedown', (e) => {
+    if (e.target !== minimizeBtn) {
+      isDragging = true;
+      offsetX = e.clientX - chatWidget.getBoundingClientRect().left;
+      offsetY = e.clientY - chatWidget.getBoundingClientRect().top;
+      chatWidget.style.cursor = 'grabbing';
+    }
+  });
+  
+  document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      const x = e.clientX - offsetX;
+      const y = e.clientY - offsetY;
+      
+      // Ogranicz do obszaru okna
+      const maxX = window.innerWidth - chatWidget.offsetWidth;
+      const maxY = window.innerHeight - chatWidget.offsetHeight;
+      
+      chatWidget.style.left = `${Math.max(0, Math.min(x, maxX))}px`;
+      chatWidget.style.top = `${Math.max(0, Math.min(y, maxY))}px`;
+    }
+  });
+  
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+    chatWidget.style.cursor = 'default';
+  });
+});
